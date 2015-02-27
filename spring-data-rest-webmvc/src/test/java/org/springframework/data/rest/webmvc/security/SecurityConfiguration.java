@@ -7,10 +7,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+// tag::code[]
+@Configuration // <1>
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // <2>
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter { // <3>
+// end::code[]
 	@Autowired
 	public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
 

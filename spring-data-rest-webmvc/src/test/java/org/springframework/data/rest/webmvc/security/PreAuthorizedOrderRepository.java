@@ -22,10 +22,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
  * @author Oliver Gierke
  * @author Greg Turnquist
  */
-@PreAuthorize("hasRole('ROLE_USER')")
+// tag::code[]
+@PreAuthorize("hasRole('ROLE_USER')") // <1>
 public interface PreAuthorizedOrderRepository extends CrudRepository<Order, Long> {
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')") // <2>
 	@Override
 	void delete(Long aLong);
 
@@ -41,3 +42,4 @@ public interface PreAuthorizedOrderRepository extends CrudRepository<Order, Long
 	@Override
 	void deleteAll();
 }
+// end::code[]

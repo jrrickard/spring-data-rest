@@ -3,6 +3,7 @@
 
 Spring Data REST presents a default view of the domain model you are exporting. But sometimes, you may need to alter the view of that model for various reasons. In this section, you will learn how to define projections and excerpts to serve up simplified and reduced views of resources.
 
+[[projections-excerpts.projections]]
 == Projections
 
 Look at the following domain model:
@@ -130,6 +131,7 @@ NOTE: The value supplied to the `projection` query parameter is the same as spec
 
 It's possible to have multiple projections.
 
+[[projections-excerpts.projections.finding]]
 === Finding existing projections
 
 Spring Data REST provides hypermedia metadata by exposing <<metadata.alps>> documents, a micro metadata format. To view the ALPS metadata, follow the `profile` link exposed by the root resource. If you navigate down to the ALPS document for `Person` resources (which would be `/alps/persons`), you can find many details about `Person` resources. Projections will be listed along with the details about the `GET` REST transitions, something like this:
@@ -169,6 +171,7 @@ Spring Data REST provides hypermedia metadata by exposing <<metadata.alps>> docu
 <3> Further down you can see projection `noAddresses` listed.
 <4> The actual attributes served up by this projection include `firstName` and `lastName`.
 
+[[projections-excerpts.projections.hidden-data]]
 === Bringing in hidden data
 
 So far, you have seen how projections can be used to reduce the information that is presented to the user. Projections can also bring in normally unseen data. For example, Spring Data REST will ignore fields or getters that are marked up with `@JsonIgnore` annotations. Look at the following domain object:
@@ -209,6 +212,7 @@ If such a projection is created and used, it will side step the `@JsonIgnore` di
 
 IMPORTANT: This example may seem a bit contrived, but it's possible with a richer domain model and many projections, to accidentally leak such details. Since Spring Data REST cannot discern the sensitivity of such data, it is up to the developers to avoid such situations.
 
+[[projections-excerpts.excerpts]]
 == Excerpts
 
 An excerpt is a projection that is applied to a repository automatically. For an example, you can alter the `PersonRepository` as follows:
@@ -225,7 +229,8 @@ NOTE: Excerpt projections do NOT apply when rendering a single resource.
 
 In addition to altering the default rendering, excerpts have additional rednering options as shown below.
 
-== Excerpting commonly accessed data
+[[projections-excerpts.excerpts.common-data]]
+=== Excerpting commonly accessed data
 
 A common situation with REST services arises when you compose domain objects. For example, a `Person` is stored in one table and their related `Address` is stored in another. By default, Spring Data REST will serve up the person's `address` as a URI the client must navigate. But if it's common for consumers to always fetch this extra piece of data, an excerpt projection can go ahead and inline this extra piece of data, saving you an extra `GET`. To do so, let's define another excerpt projection:
 
