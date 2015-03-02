@@ -16,7 +16,6 @@
 package org.springframework.data.rest.webmvc.security;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
@@ -24,7 +23,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
  * @author Greg Turnquist
  */
 @PreAuthorize("hasRole('ROLE_USER')")
-@RepositoryRestResource
 public interface PreAuthorizedOrderRepository extends CrudRepository<Order, Long> {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
