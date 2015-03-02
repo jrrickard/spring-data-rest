@@ -18,8 +18,6 @@ package org.springframework.data.rest.webmvc.support;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.util.Collections;
-
 import org.junit.Test;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -73,12 +71,4 @@ public class ExceptionHandlingCustomizationIntegrationTests extends AbstractWebI
 				andExpect(status().isInternalServerError());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.springframework.data.rest.webmvc.AbstractWebIntegrationTests#expectedRootLinkRels()
-	 */
-	@Override
-	protected Iterable<String> expectedRootLinkRels() {
-		return Collections.emptySet();
-	}
 }

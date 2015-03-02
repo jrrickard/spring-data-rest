@@ -63,11 +63,6 @@ public class SecurityIntegrationTests extends AbstractWebIntegrationTests {
 	@Autowired SecuredPersonRepository personRepository;
 	@Autowired PreAuthorizedOrderRepository orderRepository;
 
-	@Override
-	protected Iterable<String> expectedRootLinkRels() {
-		return null;
-	}
-
 	@Before
 	public void preloadData() {
 

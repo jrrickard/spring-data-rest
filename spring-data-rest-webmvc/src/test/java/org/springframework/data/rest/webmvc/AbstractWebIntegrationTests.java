@@ -236,8 +236,6 @@ public abstract class AbstractWebIntegrationTests {
 		};
 	}
 
-	protected abstract Iterable<String> expectedRootLinkRels();
-
 	protected Map<String, String> getPayloadToPost() throws Exception {
 		return Collections.emptyMap();
 	}

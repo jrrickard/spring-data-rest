@@ -128,15 +128,6 @@ public class SolrWebTests extends AbstractWebIntegrationTests {
 		deleteAndVerify(new Link("/products/1"));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.springframework.data.rest.webmvc.AbstractWebIntegrationTests#expectedRootLinkRels()
-	 */
-	@Override
-	protected Iterable<String> expectedRootLinkRels() {
-		return Arrays.asList("products");
-	}
-
 	private void assertJsonDocumentMatches(Product reference) throws Exception {
 		requestAndCompare(reference);
 	}
